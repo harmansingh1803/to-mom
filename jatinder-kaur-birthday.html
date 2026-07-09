@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Jatinder Kaur 🌸</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:ital@0;1&family=Parisienne&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8F1;
+    --cream-deep:#FBEEDF;
+    --blush:#F6DAE0;
+    --blush-soft:#FBEAEC;
+    --rose:#D9748D;
+    --rose-deep:#B14D68;
+    --plum:#4B2540;
+    --plum-soft:#7A5271;
+    --gold:#C79A45;
+    --gold-light:#E9D4A0;
+    --marigold:#E98B39;
+    --white:#FFFCF9;
+    --shadow: 0 20px 60px rgba(75,37,64,0.18);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'EB Garamond', serif;
+    background: linear-gradient(160deg, var(--cream) 0%, var(--cream-deep) 55%, var(--blush-soft) 100%);
+    color:var(--plum);
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  h1,h2,h3{ font-family:'Cormorant Garamond', serif; margin:0; font-weight:600; }
+  .script{ font-family:'Parisienne', cursive; font-weight:400; }
+
+  button{ font-family:'Cormorant Garamond', serif; cursor:pointer; border:none; background:none; }
+  button:focus-visible, a:focus-visible{ outline:3px solid var(--gold); outline-offset:3px; }
+
+  /* ---------- FLOATING PETAL BACKGROUND ---------- */
+  .petals-bg{
+    position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
+  }
+  .petal{
+    position:absolute; top:-40px;
+    width:14px; height:18px;
+    background: var(--rose);
+    border-radius: 0 100% 0 100%;
+    opacity:0.55;
+    animation: fall linear infinite;
+  }
+  .petal.gold{ background:var(--gold-light); }
+  .petal.marigold{ background:var(--marigold); opacity:0.4; }
+  .petal:nth-child(1){ left:4%;  width:12px; height:16px; animation-duration:14s; animation-delay:0s; }
+  .petal:nth-child(2){ left:14%; width:18px; height:22px; animation-duration:19s; animation-delay:2s; }
+  .petal:nth-child(3){ left:24%; width:10px; height:13px; animation-duration:12s; animation-delay:5s; }
+  .petal:nth-child(4){ left:34%; width:16px; height:20px; animation-duration:17s; animation-delay:1s; }
+  .petal:nth-child(5){ left:44%; width:13px; height:17px; animation-duration:15s; animation-delay:6s; }
+  .petal:nth-child(6){ left:54%; width:20px; height:24px; animation-duration:21s; animation-delay:3s; }
+  .petal:nth-child(7){ left:64%; width:11px; height:14px; animation-duration:13s; animation-delay:7s; }
+  .petal:nth-child(8){ left:74%; width:17px; height:21px; animation-duration:18s; animation-delay:0.5s; }
+  .petal:nth-child(9){ left:84%; width:14px; height:18px; animation-duration:16s; animation-delay:4s; }
+  .petal:nth-child(10){ left:92%; width:19px; height:23px; animation-duration:20s; animation-delay:8s; }
+  .petal:nth-child(11){ left:9%;  width:15px; height:19px; animation-duration:22s; animation-delay:9s; }
+  .petal:nth-child(12){ left:69%; width:12px; height:15px; animation-duration:14.5s; animation-delay:10s; }
+
+  @keyframes fall{
+    0%{ transform:translateY(-5vh) translateX(0) rotate(0deg); opacity:0; }
+    8%{ opacity:0.6; }
+    50%{ transform:translateY(50vh) translateX(30px) rotate(180deg); }
+    92%{ opacity:0.5; }
+    100%{ transform:translateY(105vh) translateX(-20px) rotate(360deg); opacity:0; }
+  }
+
+  /* ---------- SCENES ---------- */
+  .scene{ display:none; position:relative; z-index:1; min-height:100vh; }
+  .scene.active{ display:block; animation: sceneFade 0.9s ease forwards; }
+  @keyframes sceneFade{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:translateY(0);} }
+
+  /* ---------- SCENE 1 : CARD COVER ---------- */
+  #scene-cover{
+    display:flex; align-items:center; justify-content:center;
+    min-height:100vh; padding:32px 16px;
+  }
+  .card-scene{ perspective:2200px; }
+  .card{
+    width:min(420px, 88vw);
+    min-height:560px;
+    background: linear-gradient(155deg, var(--white), var(--blush-soft));
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    padding:46px 34px 38px;
+    text-align:center;
+    position:relative;
+    transform-origin:left center;
+    transition: transform 1.15s cubic-bezier(.65,0,.35,1), opacity 0.6s ease 0.65s;
+    border:1px solid rgba(199,154,69,0.35);
+  }
+  .card::before{
+    content:"";
+    position:absolute; inset:12px;
+    border:1.5px solid var(--gold-light);
+    border-radius:8px;
+    pointer-events:none;
+  }
+  .card.open{ transform: rotateY(-125deg); opacity:0; }
+
+  .flourish{ width:120px; height:auto; margin:0 auto 18px; display:block; opacity:0.85; }
+  .flourish path{ stroke:var(--gold); }
+
+  .eyebrow{
+    letter-spacing:0.35em; text-transform:uppercase;
+    font-size:0.72rem; color:var(--rose-deep); margin:0 0 22px;
+    font-family:'EB Garamond', serif;
+  }
+  .card-title-script{
+    font-size:clamp(2.6rem, 9vw, 3.4rem);
+    color:var(--rose-deep);
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .card-subtitle{
+    font-style:italic; color:var(--plum-soft); font-size:1.05rem; margin:0 0 20px;
+  }
+  .mom-name{
+    font-size:clamp(1.8rem,6vw,2.3rem); color:var(--plum);
+    letter-spacing:0.03em; margin-bottom:8px;
+    position:relative; display:inline-block; padding:0 6px;
+  }
+  .mom-name::after{
+    content:""; position:absolute; left:50%; bottom:-10px; transform:translateX(-50%);
+    width:70px; height:2px; background:var(--gold);
+  }
+  .from-line{ margin-top:20px; font-style:italic; color:var(--rose-deep); font-size:1.05rem; }
+
+  .seal-btn{
+    margin-top:36px;
+    display:inline-flex; flex-direction:column; align-items:center; gap:6px;
+    color:var(--white);
+    background: radial-gradient(circle at 35% 30%, var(--rose), var(--rose-deep));
+    width:118px; height:118px; border-radius:50%;
+    box-shadow: 0 10px 26px rgba(177,77,104,0.45), inset 0 -6px 12px rgba(0,0,0,0.15);
+    animation: pulse 2.6s ease-in-out infinite;
+    transition: transform 0.25s ease;
+    font-size:0.85rem; line-height:1.15;
+    padding:8px;
+  }
+  .seal-btn:hover{ transform:scale(1.06); }
+  .seal-btn .seal{ font-size:1.5rem; }
+  @keyframes pulse{
+    0%,100%{ box-shadow:0 10px 26px rgba(177,77,104,0.45), inset 0 -6px 12px rgba(0,0,0,0.15); }
+    50%{ box-shadow:0 10px 34px rgba(177,77,104,0.65), inset 0 -6px 12px rgba(0,0,0,0.15); }
+  }
+
+  /* ---------- SCENE 2 : POEM ---------- */
+  #scene-poem{ padding:70px 18px 100px; }
+  .poem-page{
+    max-width:640px; margin:0 auto; position:relative;
+    background:var(--white); border-radius:16px;
+    padding:56px 38px 60px;
+    box-shadow:var(--shadow);
+    border:1px solid rgba(199,154,69,0.3);
+  }
+  .frame-corner{
+    position:absolute; width:46px; height:46px;
+    border:2px solid var(--gold);
+    opacity:0.8;
+  }
+  .frame-corner.tl{ top:14px; left:14px; border-right:none; border-bottom:none; }
+  .frame-corner.tr{ top:14px; right:14px; border-left:none; border-bottom:none; }
+  .frame-corner.bl{ bottom:14px; left:14px; border-right:none; border-top:none; }
+  .frame-corner.br{ bottom:14px; right:14px; border-left:none; border-top:none; }
+
+  .poem-heading{
+    text-align:center; color:var(--rose-deep);
+    font-size:clamp(1.9rem,5vw,2.4rem);
+    margin-bottom:6px;
+  }
+  .poem-opening{
+    text-align:center; font-style:italic; color:var(--plum-soft);
+    margin-bottom:36px; font-size:1.15rem;
+  }
+  .poem-body p.stanza{
+    font-size:1.14rem; line-height:1.85; text-align:center;
+    color:var(--plum); margin:0 0 28px;
+    opacity:0; transform:translateY(18px);
+    transition:opacity 0.8s ease, transform 0.8s ease;
+  }
+  .poem-body p.stanza.visible{ opacity:1; transform:translateY(0); }
+
+  .signature{
+    text-align:center; margin-top:44px; font-size:1.1rem; color:var(--plum-soft);
+    opacity:0; transform:translateY(14px);
+    transition:opacity 1s ease, transform 1s ease;
+  }
+  .signature.visible{ opacity:1; transform:translateY(0); }
+  .sig-name{
+    font-family:'Parisienne', cursive; font-size:2.1rem; color:var(--rose-deep);
+    display:inline-block; margin-top:6px;
+  }
+
+  .next-btn{
+    display:block; margin:50px auto 0;
+    background:var(--rose-deep); color:var(--white);
+    padding:14px 30px; border-radius:30px; font-size:1.05rem;
+    letter-spacing:0.02em;
+    box-shadow:0 10px 24px rgba(177,77,104,0.35);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .next-btn:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(177,77,104,0.45); }
+
+  /* ---------- SCENE 3 : WISHES ---------- */
+  #scene-wishes{ padding:70px 18px 60px; }
+  .wishes-page{ max-width:920px; margin:0 auto; text-align:center; }
+  .wishes-title{
+    font-size:clamp(2.2rem,6vw,3rem); color:var(--rose-deep); margin-bottom:10px;
+  }
+  .wishes-sub{ font-style:italic; color:var(--plum-soft); margin-bottom:50px; font-size:1.1rem; }
+
+  /* candle */
+  .candle-block{ margin-bottom:70px; }
+  .candle-wrap{ display:inline-block; }
+  .flame{
+    transform-origin:50% 100%;
+    animation: flicker 1.4s ease-in-out infinite alternate;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  @keyframes flicker{
+    0%{ transform:scale(1,1) rotate(-2deg); }
+    50%{ transform:scale(1.06,0.96) rotate(2deg); }
+    100%{ transform:scale(0.97,1.05) rotate(-1deg); }
+  }
+  .flame.blown{ opacity:0; transform:scale(0.2) translateY(6px); }
+  .smoke{
+    opacity:0; transform-origin:bottom center;
+  }
+  .smoke.active{ animation: smokeRise 1.8s ease-out forwards; }
+  @keyframes smokeRise{
+    0%{ opacity:0.55; transform:translateY(0) scale(0.6); }
+    100%{ opacity:0; transform:translateY(-40px) scale(1.4); }
+  }
+  #blowBtn{
+    margin-top:18px;
+    background:transparent; border:1.5px solid var(--rose-deep); color:var(--rose-deep);
+    padding:10px 24px; border-radius:24px; font-size:1rem;
+    transition: all 0.25s ease;
+  }
+  #blowBtn:hover{ background:var(--rose-deep); color:var(--white); }
+  #blowBtn:disabled{ opacity:0.6; cursor:default; background:var(--gold-light); border-color:var(--gold-light); color:var(--plum); }
+  .wish-msg{
+    margin-top:14px; font-style:italic; color:var(--rose-deep);
+    opacity:0; transition:opacity 0.8s ease; font-size:1.05rem;
+  }
+  .wish-msg.show{ opacity:1; }
+
+  /* notes grid */
+  .notes-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:26px; margin-bottom:60px; text-align:left;
+  }
+  .note-card{
+    background:var(--white); border-radius:10px;
+    padding:26px 24px; box-shadow:0 14px 30px rgba(75,37,64,0.12);
+    border-top:4px solid var(--rose);
+    transform:rotate(var(--r,0deg));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity:0; translate: 0 20px;
+    animation: cardIn 0.7s ease forwards;
+    animation-delay: var(--d, 0s);
+  }
+  .note-card:nth-child(1){ --r:-2deg; --d:0.05s; border-top-color:var(--rose); }
+  .note-card:nth-child(2){ --r:1.5deg; --d:0.2s; border-top-color:var(--gold); }
+  .note-card:nth-child(3){ --r:-1deg; --d:0.35s; border-top-color:var(--marigold); }
+  .note-card:nth-child(4){ --r:2deg; --d:0.5s; border-top-color:var(--rose-deep); }
+  @keyframes cardIn{ to{ opacity:1; translate:0 0; } }
+  .note-card:hover{ transform:rotate(0deg) translateY(-6px); box-shadow:0 20px 40px rgba(75,37,64,0.2); }
+  .note-title{ font-size:1.3rem; color:var(--rose-deep); margin-bottom:10px; }
+  .note-body{ font-size:1.02rem; line-height:1.7; color:var(--plum); font-style:italic; }
+
+  .celebrate-btn{
+    background:linear-gradient(120deg, var(--marigold), var(--rose-deep));
+    color:var(--white); padding:16px 38px; border-radius:32px;
+    font-size:1.2rem; letter-spacing:0.02em;
+    box-shadow:0 14px 30px rgba(217,116,141,0.4);
+    transition:transform 0.2s ease;
+  }
+  .celebrate-btn:hover{ transform:translateY(-3px) scale(1.03); }
+
+  footer{
+    margin-top:70px; padding-top:26px; border-top:1px solid var(--gold-light);
+    color:var(--plum-soft); font-style:italic; font-size:1.02rem;
+  }
+  footer .heart{ color:var(--rose-deep); }
+
+  /* confetti */
+  #confettiLayer{ position:fixed; inset:0; pointer-events:none; z-index:50; overflow:hidden; }
+  .confetti-piece{
+    position:absolute; top:-20px; width:9px; height:14px; opacity:0.9;
+    animation: confettiFall 2.6s cubic-bezier(.4,.2,.7,1) forwards;
+  }
+  @keyframes confettiFall{
+    0%{ transform:translateY(0) rotate(0deg); opacity:1; }
+    100%{ transform:translateY(100vh) rotate(540deg); opacity:0; }
+  }
+
+  @media (max-width:480px){
+    .card{ padding:36px 22px 30px; min-height:520px; }
+    .poem-page{ padding:42px 22px 44px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="petals-bg" aria-hidden="true">
+  <div class="petal"></div><div class="petal gold"></div><div class="petal marigold"></div>
+  <div class="petal"></div><div class="petal gold"></div><div class="petal marigold"></div>
+  <div class="petal"></div><div class="petal gold"></div><div class="petal marigold"></div>
+  <div class="petal"></div><div class="petal gold"></div><div class="petal marigold"></div>
+</div>
+
+<!-- SCENE 1 : CARD COVER -->
+<section id="scene-cover" class="scene active">
+  <div class="card-scene">
+    <div class="card" id="card">
+      <svg class="flourish" viewBox="0 0 200 40" fill="none">
+        <path d="M2 20 C 40 5, 70 35, 100 20 C 130 5, 160 35, 198 20" stroke-width="1.4"/>
+        <circle cx="100" cy="20" r="4" fill="#C79A45"/>
+      </svg>
+      <p class="eyebrow">10 &middot; July &middot; 2026</p>
+      <h1 class="card-title-script script">Happy Birthday</h1>
+      <p class="card-subtitle">to the most wonderful mom</p>
+      <h2 class="mom-name">Jatinder Kaur</h2>
+      <p class="from-line">from your daughter, Sargun</p>
+      <button class="seal-btn" id="openCardBtn" aria-label="Open your birthday card">
+        <span class="seal">✿</span>
+        <span>Open your<br>card</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SCENE 2 : POEM -->
+<section id="scene-poem" class="scene">
+  <div class="poem-page">
+    <div class="frame-corner tl"></div>
+    <div class="frame-corner tr"></div>
+    <div class="frame-corner bl"></div>
+    <div class="frame-corner br"></div>
+
+    <h2 class="poem-heading">To My Dearest Mom</h2>
+    <p class="poem-opening">Happy Birthday, Mom.</p>
+
+    <div class="poem-body" id="poemBody">
+      <p class="stanza">You are the quiet strength behind every smile,<br>The gentle heart that made each mile worthwhile.<br>With patient hands and endless grace,<br>You turned our house into the safest place.</p>
+
+      <p class="stanza">You carried dreams that were not your own,<br>Yet helped each little seed be fully grown.<br>Through every storm, through joy and pain,<br>You stood beside us, sunshine after rain.</p>
+
+      <p class="stanza">You taught me kindness without demand,<br>To lift with love, to gently understand.<br>You showed that courage is calm and true,<br>And every better part of me begins with you.</p>
+
+      <p class="stanza">You never asked for praise or fame,<br>Yet every sacrifice became our flame.<br>The life we cherish, the home we know,<br>Exists because you helped it bloom and grow.</p>
+
+      <p class="stanza">You have been more than just a mother to me—<br>You've been my safest place, my family.<br>A listener, a teacher, a closest friend,<br>The one whose love will never end.</p>
+
+      <p class="stanza">When I felt lost and couldn't see the way,<br>You became my light through every gray.<br>When the world seemed heavy on my heart,<br>You quietly helped me make a brand-new start.</p>
+
+      <p class="stanza">You believed in me when I doubted myself.<br>You trusted me when I had little left.<br>When I felt alone and no one seemed to stay,<br>You stood beside me anyway.</p>
+
+      <p class="stanza">You held my hand through every fear,<br>Reminding me that hope was always near.<br>Not with grand speeches or loud advice,<br>But with gentle words that changed my life.</p>
+
+      <p class="stanza">One memory will forever stay,<br>A treasure time can never take away.<br>From Kanpur all the way to Amritsar's skies,<br>You filled that journey with love so wise.</p>
+
+      <p class="stanza">It wasn't just the roads we crossed,<br>But every fear that quietly got lost.<br>You guided me through uncertain days,<br>With patient words and comforting ways.</p>
+
+      <p class="stanza">You saw my tears before they fell,<br>You knew my silent stories all too well.<br>You gave me courage when mine was gone,<br>And taught me that every night brings dawn.</p>
+
+      <p class="stanza">Mom, if love could ever wear a face,<br>It would carry your warmth, your strength, your grace.<br>If kindness ever found a voice,<br>It would sound like yours in every choice.</p>
+
+      <p class="stanza">Thank you for every sleepless night,<br>For every prayer, for every fight.<br>For every smile you placed on mine,<br>And every lesson that outlived time.</p>
+
+      <p class="stanza">No gift could ever truly show<br>The endless love you help us know.<br>No words could ever quite express<br>How much you've shaped our happiness.</p>
+
+      <p class="stanza">So on your birthday, this is true—<br>The greatest blessing is simply you.<br>May every joy you've given away<br>Return a thousand times today.</p>
+
+      <p class="stanza">You'll always be my guiding light,<br>My morning hope, my stars at night.<br>Forever loved, forever near—<br>The greatest Mom, year after year.</p>
+    </div>
+
+    <p class="signature" id="signature">With all my love,<br><span class="sig-name">Your Sargun ❤️</span></p>
+
+    <button class="next-btn" id="toWishesBtn">A little more for you →</button>
+  </div>
+</section>
+
+<!-- SCENE 3 : WISHES -->
+<section id="scene-wishes" class="scene">
+  <div class="wishes-page">
+    <h2 class="wishes-title script">Happy Birthday, Mumma!</h2>
+    <p class="wishes-sub">A few more little notes, made just for you</p>
+
+    <div class="candle-block">
+      <div class="candle-wrap">
+        <svg width="90" height="150" viewBox="0 0 90 150">
+          <ellipse class="smoke" id="smoke" cx="45" cy="28" rx="7" ry="12" fill="#cfc7ca"/>
+          <path class="flame" id="flame" d="M45 12 C 55 24, 55 40, 45 46 C 35 40, 35 24, 45 12 Z" fill="url(#flameGrad)"/>
+          <defs>
+            <linearGradient id="flameGrad" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#E98B39"/>
+              <stop offset="55%" stop-color="#F2B44C"/>
+              <stop offset="100%" stop-color="#FCE29B"/>
+            </linearGradient>
+          </defs>
+          <rect x="36" y="46" width="18" height="90" rx="4" fill="#F6DAE0"/>
+          <rect x="36" y="46" width="18" height="90" rx="4" fill="none" stroke="#D9748D" stroke-width="1.5"/>
+          <rect x="36" y="66" width="18" height="6" fill="#D9748D" opacity="0.5"/>
+          <rect x="36" y="96" width="18" height="6" fill="#D9748D" opacity="0.5"/>
+        </svg>
+      </div>
+      <br>
+      <button id="blowBtn">Make a wish &amp; blow the candle</button>
+      <p class="wish-msg" id="wishMsg">Your wish is on its way to the stars 🌠</p>
+    </div>
+
+    <div class="notes-grid">
+      <div class="note-card">
+        <h3 class="note-title">A Little Wish</h3>
+        <p class="note-body">May your morning tea taste sweeter,<br>may your worries all feel light,<br>may today wrap you in warmth, Mom —<br>you deserve a perfect day and night.</p>
+      </div>
+      <div class="note-card">
+        <h3 class="note-title">For the Year Ahead</h3>
+        <p class="note-body">New year, same love that never fades,<br>new chapters, softer days.<br>Here's to health, laughter, and delight —<br>and every dream still burning bright.</p>
+      </div>
+      <div class="note-card">
+        <h3 class="note-title">Just Because</h3>
+        <p class="note-body">Not for a reason, not for a rhyme —<br>just because it's your special time.<br>You make ordinary days feel gold,<br>the best story I'll ever be told.</p>
+      </div>
+      <div class="note-card">
+        <h3 class="note-title">Forever Grateful</h3>
+        <p class="note-body">For every lesson, every hug,<br>every worry gently shrugged.<br>Thank you, Mom, for all you gave —<br>I'm the luckiest, being who you made.</p>
+      </div>
+    </div>
+
+    <button class="celebrate-btn" id="confettiBtn">Celebrate 🎉</button>
+
+    <footer>
+      Made with <span class="heart">♥</span> by Sargun — for the best mom in the world, Jatinder Kaur.
+    </footer>
+  </div>
+</section>
+
+<div id="confettiLayer" aria-hidden="true"></div>
+
+<script>
+  // ---- Scene 1 -> Scene 2 : open the card ----
+  const card = document.getElementById('card');
+  const openBtn = document.getElementById('openCardBtn');
+  const sceneCover = document.getElementById('scene-cover');
+  const scenePoem = document.getElementById('scene-poem');
+  const sceneWishes = document.getElementById('scene-wishes');
+
+  openBtn.addEventListener('click', () => {
+    card.classList.add('open');
+    launchConfetti(24);
+    setTimeout(() => {
+      sceneCover.classList.remove('active');
+      scenePoem.classList.add('active');
+      window.scrollTo({top:0, behavior:'instant'});
+      initStanzaReveal();
+    }, 950);
+  });
+
+  // ---- Stanza scroll reveal ----
+  function initStanzaReveal(){
+    const stanzas = document.querySelectorAll('.stanza');
+    const signature = document.getElementById('signature');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.25 });
+    stanzas.forEach(s => observer.observe(s));
+    observer.observe(signature);
+    // reveal first stanza immediately since it's already in view
+    setTimeout(()=> { if(stanzas[0]) stanzas[0].classList.add('visible'); }, 300);
+  }
+
+  // ---- Scene 2 -> Scene 3 ----
+  document.getElementById('toWishesBtn').addEventListener('click', () => {
+    scenePoem.classList.remove('active');
+    sceneWishes.classList.add('active');
+    window.scrollTo({top:0, behavior:'instant'});
+  });
+
+  // ---- Candle blow interaction ----
+  const blowBtn = document.getElementById('blowBtn');
+  const flame = document.getElementById('flame');
+  const smoke = document.getElementById('smoke');
+  const wishMsg = document.getElementById('wishMsg');
+  blowBtn.addEventListener('click', () => {
+    flame.classList.add('blown');
+    smoke.classList.add('active');
+    blowBtn.disabled = true;
+    blowBtn.textContent = 'Wish made ✨';
+    wishMsg.classList.add('show');
+  });
+
+  // ---- Confetti ----
+  const confettiLayer = document.getElementById('confettiLayer');
+  const confettiColors = ['#D9748D','#C79A45','#E98B39','#F6DAE0','#B14D68','#E9D4A0'];
+  function launchConfetti(count){
+    for(let i=0;i<count;i++){
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random()*100 + 'vw';
+      piece.style.background = confettiColors[Math.floor(Math.random()*confettiColors.length)];
+      piece.style.animationDelay = (Math.random()*0.6) + 's';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      piece.style.transform = 'rotate(' + (Math.random()*360) + 'deg)';
+      confettiLayer.appendChild(piece);
+      setTimeout(()=> piece.remove(), 3200);
+    }
+  }
+  document.getElementById('confettiBtn').addEventListener('click', () => launchConfetti(60));
+</script>
+</body>
+</html>
