@@ -21,9 +21,11 @@
     --gold-light:#E9D4A0;
     --marigold:#E98B39;
     --white:#FFFCF9;
+    --sky:#CFE7F0;
+    --mint:#BFE3D0;
     --shadow: 0 20px 60px rgba(75,37,64,0.18);
   }
-
+ 
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
   body{
@@ -34,13 +36,13 @@
     overflow-x:hidden;
     min-height:100vh;
   }
-
+ 
   h1,h2,h3{ font-family:'Cormorant Garamond', serif; margin:0; font-weight:600; }
   .script{ font-family:'Parisienne', cursive; font-weight:400; }
-
+ 
   button{ font-family:'Cormorant Garamond', serif; cursor:pointer; border:none; background:none; }
   button:focus-visible, a:focus-visible{ outline:3px solid var(--gold); outline-offset:3px; }
-
+ 
   /* ---------- FLOATING PETAL BACKGROUND ---------- */
   .petals-bg{
     position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
@@ -67,7 +69,7 @@
   .petal:nth-child(10){ left:92%; width:19px; height:23px; animation-duration:20s; animation-delay:8s; }
   .petal:nth-child(11){ left:9%;  width:15px; height:19px; animation-duration:22s; animation-delay:9s; }
   .petal:nth-child(12){ left:69%; width:12px; height:15px; animation-duration:14.5s; animation-delay:10s; }
-
+ 
   @keyframes fall{
     0%{ transform:translateY(-5vh) translateX(0) rotate(0deg); opacity:0; }
     8%{ opacity:0.6; }
@@ -75,12 +77,12 @@
     92%{ opacity:0.5; }
     100%{ transform:translateY(105vh) translateX(-20px) rotate(360deg); opacity:0; }
   }
-
+ 
   /* ---------- SCENES ---------- */
   .scene{ display:none; position:relative; z-index:1; min-height:100vh; }
   .scene.active{ display:block; animation: sceneFade 0.9s ease forwards; }
   @keyframes sceneFade{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:translateY(0);} }
-
+ 
   /* ---------- SCENE 1 : CARD COVER ---------- */
   #scene-cover{
     display:flex; align-items:center; justify-content:center;
@@ -108,10 +110,10 @@
     pointer-events:none;
   }
   .card.open{ transform: rotateY(-125deg); opacity:0; }
-
+ 
   .flourish{ width:120px; height:auto; margin:0 auto 18px; display:block; opacity:0.85; }
   .flourish path{ stroke:var(--gold); }
-
+ 
   .eyebrow{
     letter-spacing:0.35em; text-transform:uppercase;
     font-size:0.72rem; color:var(--rose-deep); margin:0 0 22px;
@@ -136,7 +138,7 @@
     width:70px; height:2px; background:var(--gold);
   }
   .from-line{ margin-top:20px; font-style:italic; color:var(--rose-deep); font-size:1.05rem; }
-
+ 
   .seal-btn{
     margin-top:36px;
     display:inline-flex; flex-direction:column; align-items:center; gap:6px;
@@ -155,74 +157,17 @@
     0%,100%{ box-shadow:0 10px 26px rgba(177,77,104,0.45), inset 0 -6px 12px rgba(0,0,0,0.15); }
     50%{ box-shadow:0 10px 34px rgba(177,77,104,0.65), inset 0 -6px 12px rgba(0,0,0,0.15); }
   }
-
-  /* ---------- SCENE 2 : POEM ---------- */
-  #scene-poem{ padding:70px 18px 100px; }
-  .poem-page{
-    max-width:640px; margin:0 auto; position:relative;
-    background:var(--white); border-radius:16px;
-    padding:56px 38px 60px;
-    box-shadow:var(--shadow);
-    border:1px solid rgba(199,154,69,0.3);
-  }
-  .frame-corner{
-    position:absolute; width:46px; height:46px;
-    border:2px solid var(--gold);
-    opacity:0.8;
-  }
-  .frame-corner.tl{ top:14px; left:14px; border-right:none; border-bottom:none; }
-  .frame-corner.tr{ top:14px; right:14px; border-left:none; border-bottom:none; }
-  .frame-corner.bl{ bottom:14px; left:14px; border-right:none; border-top:none; }
-  .frame-corner.br{ bottom:14px; right:14px; border-left:none; border-top:none; }
-
-  .poem-heading{
-    text-align:center; color:var(--rose-deep);
-    font-size:clamp(1.9rem,5vw,2.4rem);
-    margin-bottom:6px;
-  }
-  .poem-opening{
-    text-align:center; font-style:italic; color:var(--plum-soft);
-    margin-bottom:36px; font-size:1.15rem;
-  }
-  .poem-body p.stanza{
-    font-size:1.14rem; line-height:1.85; text-align:center;
-    color:var(--plum); margin:0 0 28px;
-    opacity:0; transform:translateY(18px);
-    transition:opacity 0.8s ease, transform 0.8s ease;
-  }
-  .poem-body p.stanza.visible{ opacity:1; transform:translateY(0); }
-
-  .signature{
-    text-align:center; margin-top:44px; font-size:1.1rem; color:var(--plum-soft);
-    opacity:0; transform:translateY(14px);
-    transition:opacity 1s ease, transform 1s ease;
-  }
-  .signature.visible{ opacity:1; transform:translateY(0); }
-  .sig-name{
-    font-family:'Parisienne', cursive; font-size:2.1rem; color:var(--rose-deep);
-    display:inline-block; margin-top:6px;
-  }
-
-  .next-btn{
-    display:block; margin:50px auto 0;
-    background:var(--rose-deep); color:var(--white);
-    padding:14px 30px; border-radius:30px; font-size:1.05rem;
-    letter-spacing:0.02em;
-    box-shadow:0 10px 24px rgba(177,77,104,0.35);
-    transition:transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .next-btn:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(177,77,104,0.45); }
-
-  /* ---------- SCENE 3 : WISHES ---------- */
+ 
+  /* ---------- SCENE 2 : WISHES + CANDLE + CELEBRATION ---------- */
   #scene-wishes{ padding:70px 18px 60px; }
   .wishes-page{ max-width:920px; margin:0 auto; text-align:center; }
   .wishes-title{
-    font-size:clamp(2.2rem,6vw,3rem); color:var(--rose-deep); margin-bottom:10px;
+    font-size:clamp(2.4rem,7vw,3.4rem); color:var(--rose-deep); margin-bottom:10px;
   }
-  .wishes-sub{ font-style:italic; color:var(--plum-soft); margin-bottom:50px; font-size:1.1rem; }
-
+  .wishes-sub{ font-style:italic; color:var(--plum-soft); margin-bottom:50px; font-size:1.15rem; }
+ 
   /* candle */
-  .candle-block{ margin-bottom:70px; }
+  .candle-block{ margin-bottom:56px; }
   .candle-wrap{ display:inline-block; }
   .flame{
     transform-origin:50% 100%;
@@ -256,11 +201,55 @@
     opacity:0; transition:opacity 0.8s ease; font-size:1.05rem;
   }
   .wish-msg.show{ opacity:1; }
-
+ 
+  /* ---- addon row: hug + gift box ---- */
+  .addon-row{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:34px;
+    margin-bottom:60px;
+  }
+  .addon-block{
+    background:var(--white); border-radius:16px; padding:28px 26px 24px;
+    box-shadow:0 14px 30px rgba(75,37,64,0.12);
+    width:260px; display:flex; flex-direction:column; align-items:center;
+    border:1px solid rgba(199,154,69,0.25);
+  }
+  .addon-block h3{ color:var(--rose-deep); font-size:1.3rem; margin-bottom:12px; }
+  .hug-btn{
+    background:linear-gradient(120deg, var(--rose), var(--rose-deep));
+    color:var(--white); padding:11px 22px; border-radius:22px; font-size:1rem;
+    box-shadow:0 10px 22px rgba(217,116,141,0.35);
+    transition: transform 0.2s ease;
+  }
+  .hug-btn:hover{ transform:translateY(-2px) scale(1.04); }
+  .addon-note{ margin-top:12px; font-style:italic; color:var(--plum-soft); font-size:0.95rem; min-height:1.4em; opacity:0; transition:opacity 0.6s ease; }
+  .addon-note.show{ opacity:1; }
+ 
+  .gift-btn{ background:none; padding:0; transition:transform 0.25s ease; }
+  .gift-btn:hover{ transform:translateY(-3px) scale(1.05); }
+  .gift-lid{ transform-origin:50px 62px; transition:transform 0.5s cubic-bezier(.65,0,.35,1); }
+  .gift-lid.open{ transform:rotate(-38deg) translateY(-4px); }
+  .gift-msg{
+    margin-top:12px; font-style:italic; color:var(--rose-deep); font-size:0.98rem;
+    opacity:0; max-height:0; overflow:hidden; transition:opacity 0.6s ease, max-height 0.6s ease;
+  }
+  .gift-msg.show{ opacity:1; max-height:120px; }
+ 
+  /* floating hearts layer */
+  #heartsLayer{ position:fixed; inset:0; pointer-events:none; z-index:45; overflow:hidden; }
+  .heart-piece{
+    position:absolute; bottom:-30px; font-size:1.4rem;
+    animation: heartFloat 3.2s ease-in forwards;
+  }
+  @keyframes heartFloat{
+    0%{ transform:translateY(0) translateX(0) scale(0.8); opacity:0; }
+    12%{ opacity:0.95; }
+    100%{ transform:translateY(-100vh) translateX(var(--sway,20px)) scale(1.15); opacity:0; }
+  }
+ 
   /* notes grid */
   .notes-grid{
     display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
-    gap:26px; margin-bottom:60px; text-align:left;
+    gap:26px; margin-bottom:52px; text-align:left;
   }
   .note-card{
     background:var(--white); border-radius:10px;
@@ -280,22 +269,84 @@
   .note-card:hover{ transform:rotate(0deg) translateY(-6px); box-shadow:0 20px 40px rgba(75,37,64,0.2); }
   .note-title{ font-size:1.3rem; color:var(--rose-deep); margin-bottom:10px; }
   .note-body{ font-size:1.02rem; line-height:1.7; color:var(--plum); font-style:italic; }
-
+ 
   .celebrate-btn{
     background:linear-gradient(120deg, var(--marigold), var(--rose-deep));
     color:var(--white); padding:16px 38px; border-radius:32px;
     font-size:1.2rem; letter-spacing:0.02em;
     box-shadow:0 14px 30px rgba(217,116,141,0.4);
     transition:transform 0.2s ease;
+    margin:0 8px 14px;
   }
   .celebrate-btn:hover{ transform:translateY(-3px) scale(1.03); }
-
+ 
+  .next-btn{
+    display:block; margin:46px auto 0;
+    background:var(--rose-deep); color:var(--white);
+    padding:14px 30px; border-radius:30px; font-size:1.05rem;
+    letter-spacing:0.02em;
+    box-shadow:0 10px 24px rgba(177,77,104,0.35);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .next-btn:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(177,77,104,0.45); }
+ 
+  /* ---------- SCENE 3 : POEM ---------- */
+  #scene-poem{ padding:70px 18px 100px; }
+  .poem-page{
+    max-width:640px; margin:0 auto; position:relative;
+    background:var(--white); border-radius:16px;
+    padding:56px 38px 60px;
+    box-shadow:var(--shadow);
+    border:1px solid rgba(199,154,69,0.3);
+  }
+  .frame-corner{
+    position:absolute; width:46px; height:46px;
+    border:2px solid var(--gold);
+    opacity:0.8;
+  }
+  .frame-corner.tl{ top:14px; left:14px; border-right:none; border-bottom:none; }
+  .frame-corner.tr{ top:14px; right:14px; border-left:none; border-bottom:none; }
+  .frame-corner.bl{ bottom:14px; left:14px; border-right:none; border-top:none; }
+  .frame-corner.br{ bottom:14px; right:14px; border-left:none; border-top:none; }
+ 
+  .poem-heading{
+    text-align:center; color:var(--rose-deep);
+    font-size:clamp(1.9rem,5vw,2.4rem);
+    margin-bottom:6px;
+  }
+  .poem-opening{
+    text-align:center; font-style:italic; color:var(--plum-soft);
+    margin-bottom:36px; font-size:1.15rem;
+  }
+  .poem-body p.stanza{
+    font-size:1.14rem; line-height:1.85; text-align:center;
+    color:var(--plum); margin:0 0 28px;
+    opacity:0; transform:translateY(18px);
+    transition:opacity 0.8s ease, transform 0.8s ease;
+  }
+  .poem-body p.stanza.visible{ opacity:1; transform:translateY(0); }
+ 
+  .signature{
+    text-align:center; margin-top:44px; font-size:1.1rem; color:var(--plum-soft);
+    opacity:0; transform:translateY(14px);
+    transition:opacity 1s ease, transform 1s ease;
+  }
+  .signature.visible{ opacity:1; transform:translateY(0); }
+  .sig-name{
+    font-family:'Parisienne', cursive; font-size:2.1rem; color:var(--rose-deep);
+    display:inline-block; margin-top:6px;
+  }
+ 
   footer{
     margin-top:70px; padding-top:26px; border-top:1px solid var(--gold-light);
     color:var(--plum-soft); font-style:italic; font-size:1.02rem;
+    text-align:center; max-width:640px; margin-left:auto; margin-right:auto;
+    padding-left:18px; padding-right:18px; padding-bottom:20px;
   }
   footer .heart{ color:var(--rose-deep); }
-
+ 
+  .final-celebrate{ text-align:center; margin-top:10px; }
+ 
   /* confetti */
   #confettiLayer{ position:fixed; inset:0; pointer-events:none; z-index:50; overflow:hidden; }
   .confetti-piece{
@@ -306,26 +357,28 @@
     0%{ transform:translateY(0) rotate(0deg); opacity:1; }
     100%{ transform:translateY(100vh) rotate(540deg); opacity:0; }
   }
-
+ 
   @media (max-width:480px){
     .card{ padding:36px 22px 30px; min-height:520px; }
     .poem-page{ padding:42px 22px 44px; }
+    .addon-row{ gap:20px; }
+    .addon-block{ width:100%; max-width:280px; }
   }
-
+ 
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
   }
 </style>
 </head>
 <body>
-
+ 
 <div class="petals-bg" aria-hidden="true">
   <div class="petal"></div><div class="petal gold"></div><div class="petal marigold"></div>
   <div class="petal"></div><div class="petal gold"></div><div class="petal marigold"></div>
   <div class="petal"></div><div class="petal gold"></div><div class="petal marigold"></div>
   <div class="petal"></div><div class="petal gold"></div><div class="petal marigold"></div>
 </div>
-
+ 
 <!-- SCENE 1 : CARD COVER -->
 <section id="scene-cover" class="scene active">
   <div class="card-scene">
@@ -346,64 +399,13 @@
     </div>
   </div>
 </section>
-
-<!-- SCENE 2 : POEM -->
-<section id="scene-poem" class="scene">
-  <div class="poem-page">
-    <div class="frame-corner tl"></div>
-    <div class="frame-corner tr"></div>
-    <div class="frame-corner bl"></div>
-    <div class="frame-corner br"></div>
-
-    <h2 class="poem-heading">To My Dearest Mom</h2>
-    <p class="poem-opening">Happy Birthday, Mom.</p>
-
-    <div class="poem-body" id="poemBody">
-      <p class="stanza">You are the quiet strength behind every smile,<br>The gentle heart that made each mile worthwhile.<br>With patient hands and endless grace,<br>You turned our house into the safest place.</p>
-
-      <p class="stanza">You carried dreams that were not your own,<br>Yet helped each little seed be fully grown.<br>Through every storm, through joy and pain,<br>You stood beside us, sunshine after rain.</p>
-
-      <p class="stanza">You taught me kindness without demand,<br>To lift with love, to gently understand.<br>You showed that courage is calm and true,<br>And every better part of me begins with you.</p>
-
-      <p class="stanza">You never asked for praise or fame,<br>Yet every sacrifice became our flame.<br>The life we cherish, the home we know,<br>Exists because you helped it bloom and grow.</p>
-
-      <p class="stanza">You have been more than just a mother to me <br>You've been my safest place, my family.<br>A listener, a teacher, a closest friend,<br>The one whose love will never end.</p>
-
-      <p class="stanza">When I felt lost and couldn't see the way,<br>You became my light through every gray.<br>When the world seemed heavy on my heart,<br>You quietly helped me make a brand-new start.</p>
-
-      <p class="stanza">You believed in me when I doubted myself.<br>You trusted me when I had little left.<br>When I felt alone and no one seemed to stay,<br>You stood beside me anyway.</p>
-
-      <p class="stanza">You held my hand through every fear,<br>Reminding me that hope was always near.<br>Not with grand speeches or loud advice,<br>But with gentle words that changed my life.</p>
-
-      <p class="stanza">One memory will forever stay,<br>A treasure time can never take away.<br>From Kanpur all the way to Amritsar's skies,<br>You filled that journey with love so wise.</p>
-
-      <p class="stanza">It wasn't just the roads we crossed,<br>But every fear that quietly got lost.<br>You guided me through uncertain days,<br>With patient words and comforting ways.</p>
-
-      <p class="stanza">You saw my tears before they fell,<br>You knew my silent stories all too well.<br>You gave me courage when mine was gone,<br>And taught me that every night brings dawn.</p>
-
-      <p class="stanza">Mom, if love could ever wear a face,<br>It would carry your warmth, your strength, your grace.<br>If kindness ever found a voice,<br>It would sound like yours in every choice.</p>
-
-      <p class="stanza">Thank you for every sleepless night,<br>For every prayer, for every fight.<br>For every smile you placed on mine,<br>And every lesson that outlived time.</p>
-
-      <p class="stanza">No gift could ever truly show<br>The endless love you help us know.<br>No words could ever quite express<br>How much you've shaped our happiness.</p>
-
-      <p class="stanza">So on your birthday, this is true <br>The greatest blessing is simply you.<br>May every joy you've given away<br>Return a thousand times today.</p>
-
-      <p class="stanza">You'll always be my guiding light,<br>My morning hope, my stars at night.<br>Forever loved, forever near <br>The greatest Mom, year after year.</p>
-    </div>
-
-    <p class="signature" id="signature">With all my love,<br><span class="sig-name">Your Sargun ❤️</span></p>
-
-    <button class="next-btn" id="toWishesBtn">A little more for you →</button>
-  </div>
-</section>
-
-<!-- SCENE 3 : WISHES -->
+ 
+<!-- SCENE 2 : WISHES + CANDLE + CELEBRATION -->
 <section id="scene-wishes" class="scene">
   <div class="wishes-page">
     <h2 class="wishes-title script">Happy Birthday, Mumma!</h2>
-    <p class="wishes-sub">A few more little notes, made just for you</p>
-
+    <p class="wishes-sub">Make a wish, and let's celebrate you today 🎂</p>
+ 
     <div class="candle-block">
       <div class="candle-wrap">
         <svg width="90" height="150" viewBox="0 0 90 150">
@@ -426,7 +428,31 @@
       <button id="blowBtn">Make a wish &amp; blow the candle</button>
       <p class="wish-msg" id="wishMsg">Your wish is on its way to the stars 🌠</p>
     </div>
-
+ 
+    <div class="addon-row">
+      <div class="addon-block">
+        <h3>Sending Hugs</h3>
+        <button class="hug-btn" id="hugBtn">Send a hug 🤗</button>
+        <p class="addon-note" id="hugNote">A big warm hug, just for you 💗</p>
+      </div>
+      <div class="addon-block">
+        <h3>A Little Surprise</h3>
+        <button class="gift-btn" id="giftBtn" aria-label="Open your surprise gift">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <rect x="20" y="46" width="60" height="42" rx="4" fill="#F6DAE0" stroke="#D9748D" stroke-width="1.5"/>
+            <rect x="44" y="46" width="12" height="42" fill="#D9748D" opacity="0.6"/>
+            <g class="gift-lid" id="giftLid">
+              <rect x="16" y="34" width="68" height="16" rx="4" fill="#D9748D"/>
+              <rect x="44" y="34" width="12" height="16" fill="#B14D68"/>
+              <path d="M50 34 C 38 14, 20 20, 32 34 Z" fill="#C79A45"/>
+              <path d="M50 34 C 62 14, 80 20, 68 34 Z" fill="#C79A45"/>
+            </g>
+          </svg>
+        </button>
+        <p class="gift-msg" id="giftMsg">Every day you give without asking for anything back. Today, this tiny gift is just to say — you are so deeply loved. 🎁</p>
+      </div>
+    </div>
+ 
     <div class="notes-grid">
       <div class="note-card">
         <h3 class="note-title">A Little Wish</h3>
@@ -445,36 +471,103 @@
         <p class="note-body">For every lesson, every hug,<br>every worry gently shrugged.<br>Thank you, Mom, for all you gave <br>I'm the luckiest, being who you made.</p>
       </div>
     </div>
-
+ 
     <button class="celebrate-btn" id="confettiBtn">Celebrate 🎉</button>
-
+    <br>
+    <button class="next-btn" id="toPoemBtn">Read my letter to you →</button>
+  </div>
+</section>
+ 
+<!-- SCENE 3 : POEM -->
+<section id="scene-poem" class="scene">
+  <div class="poem-page">
+    <div class="frame-corner tl"></div>
+    <div class="frame-corner tr"></div>
+    <div class="frame-corner bl"></div>
+    <div class="frame-corner br"></div>
+ 
+    <h2 class="poem-heading">To My Dearest Mom</h2>
+    <p class="poem-opening">Happy Birthday, Mom.</p>
+ 
+    <div class="poem-body" id="poemBody">
+      <p class="stanza">You are the quiet strength behind every smile,<br>The gentle heart that made each mile worthwhile.<br>With patient hands and endless grace,<br>You turned our house into the safest place.</p>
+ 
+      <p class="stanza">You carried dreams that were not your own,<br>Yet helped each little seed be fully grown.<br>Through every storm, through joy and pain,<br>You stood beside us, sunshine after rain.</p>
+ 
+      <p class="stanza">You taught me kindness without demand,<br>To lift with love, to gently understand.<br>You showed that courage is calm and true,<br>And every better part of me begins with you.</p>
+ 
+      <p class="stanza">You never asked for praise or fame,<br>Yet every sacrifice became our flame.<br>The life we cherish, the home we know,<br>Exists because you helped it bloom and grow.</p>
+ 
+      <p class="stanza">You have been more than just a mother to me <br>You've been my safest place, my family.<br>A listener, a teacher, a closest friend,<br>The one whose love will never end.</p>
+ 
+      <p class="stanza">When I felt lost and couldn't see the way,<br>You became my light through every gray.<br>When the world seemed heavy on my heart,<br>You quietly helped me make a brand-new start.</p>
+ 
+      <p class="stanza">You believed in me when I doubted myself.<br>You trusted me when I had little left.<br>When I felt alone and no one seemed to stay,<br>You stood beside me anyway.</p>
+ 
+      <p class="stanza">You held my hand through every fear,<br>Reminding me that hope was always near.<br>Not with grand speeches or loud advice,<br>But with gentle words that changed my life.</p>
+ 
+      <p class="stanza">One memory will forever stay,<br>A treasure time can never take away.<br>From Kanpur all the way to Amritsar's skies,<br>You filled that journey with love so wise.</p>
+ 
+      <p class="stanza">It wasn't just the roads we crossed,<br>But every fear that quietly got lost.<br>You guided me through uncertain days,<br>With patient words and comforting ways.</p>
+ 
+      <p class="stanza">You saw my tears before they fell,<br>You knew my silent stories all too well.<br>You gave me courage when mine was gone,<br>And taught me that every night brings dawn.</p>
+ 
+      <p class="stanza">Mom, if love could ever wear a face,<br>It would carry your warmth, your strength, your grace.<br>If kindness ever found a voice,<br>It would sound like yours in every choice.</p>
+ 
+      <p class="stanza">Thank you for every sleepless night,<br>For every prayer, for every fight.<br>For every smile you placed on mine,<br>And every lesson that outlived time.</p>
+ 
+      <p class="stanza">No gift could ever truly show<br>The endless love you help us know.<br>No words could ever quite express<br>How much you've shaped our happiness.</p>
+ 
+      <p class="stanza">So on your birthday, this is true <br>The greatest blessing is simply you.<br>May every joy you've given away<br>Return a thousand times today.</p>
+ 
+      <p class="stanza">You'll always be my guiding light,<br>My morning hope, my stars at night.<br>Forever loved, forever near <br>The greatest Mom, year after year.</p>
+    </div>
+ 
+    <p class="signature" id="signature">With all my love,<br><span class="sig-name">Your Sargun ❤️</span></p>
+ 
+    <div class="final-celebrate">
+      <button class="celebrate-btn" id="confettiBtn2">Celebrate once more 🎉</button>
+    </div>
+ 
     <footer>
       Made with <span class="heart">♥</span> by Divsargun to my bestest friend in the whole world  ❤️ Love you so muchh Mamma ❤️
     </footer>
   </div>
 </section>
-
+ 
 <div id="confettiLayer" aria-hidden="true"></div>
-
+<div id="heartsLayer" aria-hidden="true"></div>
+ 
 <script>
   // ---- Scene 1 -> Scene 2 : open the card ----
   const card = document.getElementById('card');
   const openBtn = document.getElementById('openCardBtn');
   const sceneCover = document.getElementById('scene-cover');
-  const scenePoem = document.getElementById('scene-poem');
   const sceneWishes = document.getElementById('scene-wishes');
-
+  const scenePoem = document.getElementById('scene-poem');
+ 
   openBtn.addEventListener('click', () => {
     card.classList.add('open');
     launchConfetti(24);
     setTimeout(() => {
       sceneCover.classList.remove('active');
-      scenePoem.classList.add('active');
+      sceneWishes.classList.add('active');
       window.scrollTo({top:0, behavior:'instant'});
-      initStanzaReveal();
     }, 950);
   });
-
+ 
+  // ---- Scene 2 -> Scene 3 ----
+  let stanzasInitialized = false;
+  document.getElementById('toPoemBtn').addEventListener('click', () => {
+    sceneWishes.classList.remove('active');
+    scenePoem.classList.add('active');
+    window.scrollTo({top:0, behavior:'instant'});
+    if(!stanzasInitialized){
+      initStanzaReveal();
+      stanzasInitialized = true;
+    }
+  });
+ 
   // ---- Stanza scroll reveal ----
   function initStanzaReveal(){
     const stanzas = document.querySelectorAll('.stanza');
@@ -488,17 +581,9 @@
     }, { threshold: 0.25 });
     stanzas.forEach(s => observer.observe(s));
     observer.observe(signature);
-    // reveal first stanza immediately since it's already in view
     setTimeout(()=> { if(stanzas[0]) stanzas[0].classList.add('visible'); }, 300);
   }
-
-  // ---- Scene 2 -> Scene 3 ----
-  document.getElementById('toWishesBtn').addEventListener('click', () => {
-    scenePoem.classList.remove('active');
-    sceneWishes.classList.add('active');
-    window.scrollTo({top:0, behavior:'instant'});
-  });
-
+ 
   // ---- Candle blow interaction ----
   const blowBtn = document.getElementById('blowBtn');
   const flame = document.getElementById('flame');
@@ -510,8 +595,44 @@
     blowBtn.disabled = true;
     blowBtn.textContent = 'Wish made ✨';
     wishMsg.classList.add('show');
+    launchConfetti(18);
   });
-
+ 
+  // ---- Hug button: floating hearts ----
+  const hugBtn = document.getElementById('hugBtn');
+  const hugNote = document.getElementById('hugNote');
+  const heartsLayer = document.getElementById('heartsLayer');
+  const heartEmojis = ['💗','💕','💖','❤️','💓'];
+  hugBtn.addEventListener('click', () => {
+    hugNote.classList.add('show');
+    launchHearts(16);
+  });
+  function launchHearts(count){
+    for(let i=0;i<count;i++){
+      const piece = document.createElement('span');
+      piece.className = 'heart-piece';
+      piece.textContent = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
+      piece.style.left = (10 + Math.random()*80) + 'vw';
+      piece.style.setProperty('--sway', (Math.random()*80 - 40) + 'px');
+      piece.style.animationDelay = (Math.random()*0.5) + 's';
+      piece.style.fontSize = (1.1 + Math.random()*1.2) + 'rem';
+      heartsLayer.appendChild(piece);
+      setTimeout(()=> piece.remove(), 3800);
+    }
+  }
+ 
+  // ---- Gift box open ----
+  const giftBtn = document.getElementById('giftBtn');
+  const giftLid = document.getElementById('giftLid');
+  const giftMsg = document.getElementById('giftMsg');
+  let giftOpened = false;
+  giftBtn.addEventListener('click', () => {
+    giftOpened = !giftOpened;
+    giftLid.classList.toggle('open', giftOpened);
+    giftMsg.classList.toggle('show', giftOpened);
+    if(giftOpened){ launchHearts(6); }
+  });
+ 
   // ---- Confetti ----
   const confettiLayer = document.getElementById('confettiLayer');
   const confettiColors = ['#D9748D','#C79A45','#E98B39','#F6DAE0','#B14D68','#E9D4A0'];
@@ -529,6 +650,7 @@
     }
   }
   document.getElementById('confettiBtn').addEventListener('click', () => launchConfetti(60));
+  document.getElementById('confettiBtn2').addEventListener('click', () => { launchConfetti(70); launchHearts(10); });
 </script>
 </body>
 </html>
